@@ -100,9 +100,11 @@ N.T = (el, x, y, unite) => {
     const posterContainer = N.Get.class('poster-anime-container');
     let posterContainerW = 0;
     let timer = 0;
+    let border = 0;
 
     setTimeout(() => {
         posterContainerW = N.Get.class('poster-anime-container')[0].offsetWidth;
+        border = 1650 + 800 + 450 + 40 * 15 + posterContainerW / 6 / 2;
     }, 1000)
 
     window.onscroll = function (e) {
@@ -123,15 +125,16 @@ N.T = (el, x, y, unite) => {
         if (window.scrollY >= 1650 + 800) {
             N.T(container[0], -window.scrollY + 800, 0, 'px')
 
-            if (window.scrollY >= 3780) {
-                N.T(container[0], -3780 + 800, 0, 'px')
+            if (window.scrollY >= border) {
+
+                N.T(container[0], -border + 800, 0, 'px')
 
 
-                N.T(posterContainer[0], -window.scrollY + 3780, 0, 'px')
+                N.T(posterContainer[0], -window.scrollY + border, 0, 'px')
 
                 clearTimeout(timer)
                 timer = setTimeout(() => {
-                    goToPoster(N.round((window.scrollY - 3700) / (posterContainerW / 5), 0));
+                    goToPoster(N.round((window.scrollY - border) / (posterContainerW / 5), 0));
                 }, 1000);
 
             }
@@ -142,12 +145,12 @@ N.T = (el, x, y, unite) => {
     }
 
     function goToPoster(n) {
-        console.log(n + 1, 3780 + posterContainerW / 5 * n);
+        console.log(n + 1, border + posterContainerW / 5 * n);
         let frame = 0;
 
         let t = 0;
         let x = window.scrollY;
-        let xf = (3780 + (posterContainerW / 5) * n);
+        let xf = (border + (posterContainerW / 5) * n);
         frame = setInterval(() => {
             x = N.Lerp(x, xf, 0.1)
             window.scrollTo(0, x);
