@@ -100,61 +100,59 @@ N.T = (el, x, y, unite) => {
     setTimeout(() => {
         posterContainerW = N.Get.class('poster-anime-container')[0].offsetWidth;
         border = 1650 + 800 + 450 + 40 * 15 + posterContainerW / 6 / 2;
+
+        console.log(posterContainerW, border);
     }, 1000)
 
-    window.onscroll = function (e) {
-        console.log(window.scrollY);
-        if (window.scrollY <= 1650) {
-            N.T(container[0], -window.scrollY, 0, 'px')
-            N.T(bleuRouge[0], 0, 0, 'px')
-        } else {
-            N.T(container[0], -1650, 0, 'px');
-            if (window.scrollY - 1650 < 800) {
-                N.T(bleuRouge[0], 0, -window.scrollY + 1650, 'px')
-            } else {
-                N.T(bleuRouge[0], 0, -800, 'px')
-            }
-        }
-
-        if (window.scrollY >= 1650 + 800) {
-            N.T(container[0], -window.scrollY + 800, 0, 'px')
-
-            if (window.scrollY >= border) {
-
-                N.T(container[0], -border + 800, 0, 'px')
-
-
-                N.T(posterContainer[0], -window.scrollY + border, 0, 'px')
-
-                clearTimeout(timer)
-                timer = setTimeout(() => {
-                    goToPoster(N.round((window.scrollY - border) / (posterContainerW / 5), 0));
-                }, 1000);
-
-            }
-            else {
-                clearTimeout(timer)
-            }
-        }
-    }
-
     function goToPoster(n) {
-        console.log(n + 1, border + posterContainerW / 5 * n);
-        let frame = 0;
-
-        let t = 0;
-        let x = window.scrollY;
-        let xf = (border + (posterContainerW / 5) * n);
-        frame = setInterval(() => {
-            x = N.Lerp(x, xf, 0.1)
-            window.scrollTo(0, x);
-
-            if (Math.abs(x - xf) < 1.5) {
-                window.scrollTo(0, xf);
-                clearInterval(frame)
-            }
-            console.log(x);
-        }, 1000 / 60)
-
+        // console.log(n + 1, border + posterContainerW / 5 * n);
+        window.scrollTo(0, (border + posterContainerW / 5 * n) / 2)
     }
+
+    let x = 0;
+    let curX = 0;
+
+    ! function main() {
+        setInterval(() => {
+            x = window.scrollY * 2;
+
+            curX = N.Lerp(curX, x, 0.1);
+
+
+            if (curX <= 1650) {
+                N.T(container[0], -curX, 0, 'px')
+                N.T(bleuRouge[0], 0, 0, 'px')
+            } else {
+                N.T(container[0], -1650, 0, 'px');
+                if (curX - 1650 < 800) {
+                    N.T(bleuRouge[0], 0, -curX + 1650, 'px')
+                } else {
+                    N.T(bleuRouge[0], 0, -800, 'px')
+                }
+            }
+
+            if (curX >= 1650 + 800) {
+                N.T(container[0], -curX + 800, 0, 'px')
+
+                if (curX >= border) {
+
+                    N.T(container[0], -border + 800, 0, 'px')
+                    N.T(posterContainer[0], -curX + border, 0, 'px');
+
+
+
+                    window.onscroll = function (e) {
+                        clearTimeout(timer)
+                        timer = setTimeout(() => {
+                            goToPoster(N.round((curX - border) / (posterContainerW / 5), 0));
+                        }, 1000);
+                    }
+
+                }
+                else {
+                    clearTimeout(timer)
+                }
+            }
+        }, 1000 / 60)
+    }()
 }()
