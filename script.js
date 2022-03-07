@@ -86,7 +86,6 @@ N.TopReload = t => {
 N.T = (el, x, y, unite) => {
     unite = N.Is.und(unite) ? "%" : unite;
     el.style.transform = "translate3d(" + x + unite + "," + y + unite + ",0)"
-
 }
 
 ! function () {
