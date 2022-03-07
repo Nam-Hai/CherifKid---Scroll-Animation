@@ -1,5 +1,4 @@
 let N = {};
-
 /** Interpolation Lineaire */
 N.Lerp = function (xi, xf, t) {
     return (1 - t) * xi + t * xf
