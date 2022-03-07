@@ -94,18 +94,16 @@ N.T = (el, x, y, unite) => {
     const bleuRouge = N.Get.class('bleu-rouge');
     const posterContainer = N.Get.class('poster-anime-container');
     let posterContainerW = 0;
-    let timer = 0;
+    let timerID = 0;
     let border = 0;
 
     setTimeout(() => {
         posterContainerW = N.Get.class('poster-anime-container')[0].offsetWidth;
         border = 1650 + 800 + 450 + 40 * 15 + posterContainerW / 6 / 2;
-
-        console.log(posterContainerW, border);
     }, 1000)
 
+    // scroll a l'affiche d'indice n
     function goToPoster(n) {
-        // console.log(n + 1, border + posterContainerW / 5 * n);
         window.scrollTo(0, (border + posterContainerW / 5 * n) / 2)
     }
 
@@ -115,9 +113,9 @@ N.T = (el, x, y, unite) => {
     ! function main() {
         setInterval(() => {
             x = window.scrollY * 2;
-
             curX = N.Lerp(curX, x, 0.1);
 
+            if (Math.abs(curX - x) < 0.01) curX = x
 
             if (curX <= 1650) {
                 N.T(container[0], -curX, 0, 'px')
@@ -142,16 +140,19 @@ N.T = (el, x, y, unite) => {
 
 
                     window.onscroll = function (e) {
-                        clearTimeout(timer)
-                        timer = setTimeout(() => {
+                        clearTimeout(timerID)
+                        timerID = setTimeout(() => {
                             goToPoster(N.round((curX - border) / (posterContainerW / 5), 0));
                         }, 1000);
                     }
 
+                } else {
+                    N.T(posterContainer[0], 0, 0, 'px');
+                    clearTimeout(timerID)
                 }
-                else {
-                    clearTimeout(timer)
-                }
+            } else {
+                // aucune idee de pourquoi ce else est necessaire, mais bon sinon la fonction goToPoster est appelé lorsque qu'on reveint
+                clearTimeout(timerID)
             }
         }, 1000 / 60)
     }()
