@@ -123,9 +123,12 @@ N.T = (el, x, y, unite) => {
             } else {
                 N.T(container[0], -1650, 0, 'px');
                 if (curX - 1650 < 800) {
-                    N.T(bleuRouge[0], 0, -curX + 1650, 'px')
+
+                    N.O(bleuRouge[0].querySelector('#cherif4'), N.iLerp(curX, 1650, 1650 + 800))
+                    // N.T(bleuRouge[0], 0, -curX + 1650, 'px')
                 } else {
-                    N.T(bleuRouge[0], 0, -800, 'px')
+
+                    // N.T(bleuRouge[0], 0, -800, 'px')
                 }
             }
 

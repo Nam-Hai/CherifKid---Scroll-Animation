@@ -75,9 +75,13 @@ main{
     height: 30rem;
 }
 
+.bleu-rouge img:first-child{
+    position: absolute;
+}
+
 #cherif4 {
     aspect-ratio: 1 / 1;
-    margin-bottom: 20rem
+    /* margin-bottom: 20rem */
 }
 
 .poster {
