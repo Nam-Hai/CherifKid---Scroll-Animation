@@ -111,7 +111,6 @@ N.T = (el, x, y, unite) => {
             N.T(bleuRouge[0], 0, 0, 'px')
         } else {
             N.T(container[0], -1650, 0, 'px');
-
             if (window.scrollY - 1650 < 800) {
                 N.T(bleuRouge[0], 0, -window.scrollY + 1650, 'px')
             } else {
