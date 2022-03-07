@@ -62,7 +62,6 @@ N.Is = {
     und: t => void 0 === t
 }
 
-
 N.O = (t, r) => {
     t.style.opacity = r
 }
