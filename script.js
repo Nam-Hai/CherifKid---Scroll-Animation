@@ -37,7 +37,6 @@ N.index = function (el, list) {
     return -1
 }
 
-
 N.Index = {
     /** L'indice de l'element par rapport a son parent */
     list: (el) => N.index(el, el.parentNode.children),
