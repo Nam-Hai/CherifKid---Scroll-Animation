@@ -18,6 +18,32 @@ body {
     /* overflow-x: hidden; */
     height: 5000px;
     font-size: 15px;
+    overflow-x: hidden;
+    width: 100vw;
+
+    background-color: rgba(235, 11, 11, 0);
+
+}
+
+html::-webkit-scrollbar {
+    width: 8px;
+    background: #000;
+}
+
+html::-webkit-scrollbar-thumb{
+    background: rgb(80, 73, 73);
+    border-radius: 0.5rem;
+    width: 0.5rem;
+    border: 1px solid #000;
+}
+
+html::-webkit-scrollbar-track-piece {
+    width: 10px;
+}
+
+
+html::-webkit-scrollbar-button {
+    display: none;
 }
 
 main{
@@ -25,9 +51,7 @@ main{
     top: 0;
     left: 0;
     height: 100%;
-    width: 100%;
-
-    background-color: #A5FF19;
+    width: 100vw;
     background-image: url('background_pattern.jpg')
 }
 
@@ -83,10 +107,17 @@ main{
 
 h2{
     color: white;
-    font-family: 'Futura Renner';
-    font-size: 7rem;
+    font-family: 'Migra' ;
+    font-size: 6rem;
     width: 100%;
     text-align: center;
+
+    display: flex;
+    align-items: center;
+}
+
+.poster h2 > img {
+    height: 6rem;
 }
 
 @keyframes onStart {
