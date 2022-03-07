@@ -7,11 +7,10 @@
     font-family: "Futura Renner";
     /* src: url("/font/FuturaRenner-Light.oet"); */
     src:   url("/font/FuturaRenner-Light.oet") format('embedded-opentype'),
-        url("/font/FuturaRenner-Light.woff2") format('woff2'),
         url("/font/FuturaRenner-Light.woff") format('woff'),
         url("/font/FuturaRenner-Light.ttf") format('ttf');
-font-weight: normal;
-font-style: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
 
