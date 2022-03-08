@@ -53,11 +53,11 @@ N.round = (x, decimal) => {
 N.Has = (el, p) => el.hasOwnProperty(p)
 
 N.Is = {
-    str: t => 'string' == typeof t,
-    obj: t => t === Object(t),
-    arr: t => t.constructor === Array,
-    def: t => void 0 !== t,
-    und: t => void 0 === t
+    str: e => 'string' == typeof e,
+    obj: e => e === Object(e),
+    arr: e => e.constructor === Array,
+    def: e => void 0 !== e,
+    und: e => void 0 === e
 }
 
 N.O = (t, r) => {
@@ -67,11 +67,11 @@ N.pe = (t, r) => {
     t.style.pointerEvents = r
 };
 N.PE = {
-    all: t => {
-        R.pe(t, "all")
+    all: el => {
+        R.pe(el, "all")
     },
-    none: t => {
-        R.pe(t, "none")
+    none: el => {
+        R.pe(el, "none")
     }
 }
 
