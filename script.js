@@ -31,13 +31,13 @@ N.Select = {
     el: t => {
         let r = [];
         var s;
-        return R.Is.str(t) ? (s = t.substring(1), "#" === t.charAt(0) ? r[0] = R.G.id(s) : r = R.G.class(s)) : r[0] = t, r
+        return N.Is.str(t) ? (s = t.substring(1), "#" === t.charAt(0) ? r[0] = N.G.id(s) : r = N.G.class(s)) : r[0] = t, r
     },
     type: t => "#" === t.charAt(0) ? "id" : "class",
     name: t => t.substring(1)
 }
 
-/** Return l'index de l'element */
+/** Return l'index de l'element  */
 N.index = function (el, list) {
     let n = list.length;
     for (let i = 0; i < N; i++)
